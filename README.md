@@ -80,6 +80,7 @@ Make sure you have the following installed on your system:
     - Click on the "Pay" button to open the payment pop-up.
     - Enter the credit card number and name of the holder.
     - If the payment returns an error, the pop-up will close and you will need to generate a new order ID because the previous order has the status "Failed".
+    - If the payment process seems to be stuck, there is a mechanism in place that checks the payment status every 10 seconds. If the payment state remains unchanged after 30 seconds (i.e., the same state is detected in three consecutive checks), the payment process will be automatically closed, and you will need to try again.
     - Generate a new order ID and try the payment again with the correct card information.
     - If the payment is successful, you will be redirected to the main page where you can repeat the process.
     - Here is an example image:
