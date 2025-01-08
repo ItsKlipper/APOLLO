@@ -60,22 +60,32 @@ Make sure you have the following installed on your system:
 
 1. **Add Products to Cart** 🛒
     - Browse the available products and add them to your cart.
+    - Here is an example image:
 
-2. **Proceed to Payment** 💳
+    ![Homepage](/public/homepage.png)
+   
+3. **Proceed to Payment** 💳
     - Once you are satisfied with the products in your cart, click on the "Proceed to Payment" button.
+    - Here is an example image:
 
-3. **Payment Page** 📝
+    ![CheckOut](/public/checkout.png)
+4. **Payment Page** 📝
     - Fill in all the fields on the payment page.
     - Click on the "Generate Order ID" button or paste an existing order ID.
     - The "Pay" button will become active.
+    - Here is an example image:
 
-4. **Make Payment** 💵
+    ![Before Paying](/public/beforePaying.png)
+5. **Make Payment** 💵
     - Click on the "Pay" button to open the payment pop-up.
     - Enter the credit card number and name of the holder.
     - If the payment returns an error, the pop-up will close and you will need to generate a new order ID because the previous order has the status "Failed".
     - Generate a new order ID and try the payment again with the correct card information.
     - If the payment is successful, you will be redirected to the main page where you can repeat the process.
+    - Here is an example image:
 
+    ![After Paying](/public/afterPaying.png)
+   
 ## Troubleshooting 🛠️
 
 - If you encounter any issues, make sure to check the console for errors.
