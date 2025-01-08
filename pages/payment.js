@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from '../components/sections/Navbar';
 import Header from '../components/sections/Header';
 import Main from '../components/sections/PaymentMain';
-import Footer from '../components/sections/SectionFooter';
+import Footer from '../components/sections/Footer';
 
 export default function Payment() {
   const [cart, setCart] = useState([]);

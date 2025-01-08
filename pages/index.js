@@ -6,7 +6,7 @@ import { isValidUrl } from '../utils/validateUrl';
 import Navbar from '../components/sections/Navbar';
 import Header from '../components/sections/Header';
 import IndexMain from '../components/sections/IndexMain';
-import Footer from '../components/sections/SectionFooter';
+import Footer from '../components/sections/Footer';
 
 export default function Home() {
   const [cart, setCart] = useState([]);
