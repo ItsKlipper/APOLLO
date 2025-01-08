@@ -38,7 +38,7 @@ Make sure you have the following installed on your system:
 
 2. Start the server:
     ```bash
-    node server.js
+    set REVOLUT_API_KEY=XXX && node server.js
     ```
 
 3. Open another terminal and navigate to the `react-revolut` directory:
