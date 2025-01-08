@@ -35,12 +35,10 @@ app.post('/create-order', async (req, res) => {
       }
     );
 
-    // Ensure the response contains the necessary fields
     if (!response.data.id || !response.data.token) {
       throw new Error('Invalid response from Revolut API');
     }
 
-    // Ensure the token is included in the response
     res.json({
       id: response.data.id,
       token: response.data.token
@@ -69,19 +67,42 @@ app.get('/get-order/:orderId', async (req, res) => {
       }
     );
 
-    // Ensure the response contains the necessary fields
     if (!response.data.id || !response.data.token) {
       throw new Error('Invalid response from Revolut API');
     }
 
-    // Ensure the token is included in the response
-    res.json({
-      id: response.data.id,
-      token: response.data.token
-    });
+    res.json(response.data);
   } catch (error) {
     console.error('Error retrieving order:', error.response ? error.response.data : error.message);
     res.status(500).json({ error: error.response ? error.response.data : 'Failed to retrieve order' });
+  }
+});
+
+// Endpoint to retrieve payment details by payment ID
+app.get('/get-payment-status/:paymentId', async (req, res) => {
+  const { paymentId } = req.params;
+  console.log('Retrieving payment status for payment ID:', paymentId);
+
+  try {
+    const response = await axios.get(
+      `https://sandbox-merchant.revolut.com/api/payments/${paymentId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${REVOLUT_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }
+    );
+
+    if (response.data && response.data.state) {
+      res.json(response.data);
+    } else {
+      throw new Error('Invalid response from Revolut API');
+    }
+  } catch (error) {
+    console.error('Error retrieving payment status:', error.response ? error.response.data : error.message);
+    res.status(500).json({ error: error.response ? error.response.data : 'Failed to retrieve payment status' });
   }
 });
 

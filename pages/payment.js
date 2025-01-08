@@ -133,6 +133,40 @@ export default function Payment() {
       };
 
       revolutCheckout.payWithPopup(options);
+
+      if (orderId) {
+        let attempts = 0;
+        const interval = setInterval(async () => {
+          try {
+            const response = await apiClient.get(`/get-order/${orderId}`);
+            const paymentId = response.data.payments?.[0]?.id;
+            if (paymentId) {
+              const paymentResponse = await apiClient.get(`/get-payment-status/${paymentId}`);
+              const paymentState = paymentResponse.data.state;
+              console.log('Payment state:', paymentState);
+
+              if (paymentState === 'authorisation_started') {
+                attempts += 1;
+                if (attempts >= 3) {
+                  revolutCheckout.destroy();
+                  setOrderId('');
+                  setPaymentToken(null);
+                  setErrorWithTimeout('❌ Payment is stuck in processing. Please try again.');
+                  clearInterval(interval);
+                }
+              } else {
+                clearInterval(interval);
+              }
+            } else {
+              setErrorWithTimeout('❌ No payments found in order data.');
+              clearInterval(interval);
+            }
+          } catch (err) {
+            console.error('❌ Error polling payment status:', err);
+            clearInterval(interval);
+          }
+        }, 10000);
+      }
     } catch (err) {
       console.error('❌ Error during payment:', err);
       setErrorWithTimeout(`❌ Payment Error: ${err.message}`);
