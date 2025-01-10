@@ -36,22 +36,28 @@ Make sure you have the following installed on your system:
     cd React-Revolut/react-revolut/server
     ```
 
-2. Start the server:
+2. Start the server with the secret API key and desired port:
     ```bash
-    set REVOLUT_API_KEY=XXX && node server.js
+    set REVOLUT_API_KEY=XXX && set PORT=4000 && node server.js
     ```
 
-3. Open another terminal and navigate to the `react-revolut` directory:
+    Alternatively, you can create a `.env` file locally in the `server` folder with the following variables:
+    ```plaintext
+    PORT=4000
+    REVOLUT_API_KEY=XXX
+    ```
+   
+4. Open another terminal and navigate to the `react-revolut` directory:
     ```bash
     cd React-Revolut/react-revolut
     ```
 
-4. Start the development server:
+5. Start the development server:
     ```bash
     npm run dev
     ```
 
-5. Open your browser and go to:
+6. Open your browser and go to:
     ```
     http://localhost:3000/
     ```
@@ -80,6 +86,7 @@ Make sure you have the following installed on your system:
     - Click on the "Pay" button to open the payment pop-up.
     - Enter the credit card number and name of the holder.
     - If the payment returns an error, the pop-up will close and you will need to generate a new order ID because the previous order has the status "Failed".
+    - If the payment process seems to be stuck, there is a mechanism in place that checks the payment status every 10 seconds. If the payment state remains unchanged after 30 seconds (i.e., the same state is detected in three consecutive checks), the payment process will be automatically closed, and you will need to try again.
     - Generate a new order ID and try the payment again with the correct card information.
     - If the payment is successful, you will be redirected to the main page where you can repeat the process.
     - Here is an example image:
