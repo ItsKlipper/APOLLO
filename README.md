@@ -36,9 +36,9 @@ Make sure you have the following installed on your system:
     cd React-Revolut/react-revolut/server
     ```
 
-2. Start the server with the secret API key and desired port:
+2. Start the server with the secret API key and desired port (4000 recommended):
     ```bash
-    set REVOLUT_API_KEY=XXX && set PORT=4000 && node server.js
+    set REVOLUT_API_KEY=XXX && set PORT=XXXX && node server.js
     ```
 
     Alternatively, you can create a `.env` file locally in the `server` folder with the following variables:
