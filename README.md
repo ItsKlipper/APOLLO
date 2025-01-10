@@ -31,20 +31,24 @@ Make sure you have the following installed on your system:
 
 ### Running the Application 🚴‍♂️
 
-1. Open a terminal and navigate to the `server` directory:
+1. Open a terminal and navigate to the `root` directory:
     ```bash
-    cd React-Revolut/react-revolut/server
+    cd React-Revolut/react-revolut
     ```
 
-2. Start the server with the secret API key and desired port (4000 recommended):
+2. Create and set .env variables with the secret API key and port to start the server (REACT_APP_PORT: 4000 //default port:
     ```bash
-    set REVOLUT_API_KEY=XXX && set PORT=XXXX && node server.js
+    (echo REACT_APP_PORT=XXXX & echo REVOLUT_API_KEY=XXX) > .env
     ```
-
-    Alternatively, you can create a `.env` file locally in the `server` folder with the following variables:
+    
+    Alternatively, you can create a `.env` file locally in the `root` directory with the following variables:
     ```plaintext
-    PORT=4000
+    REACT_APP_PORT=XXXX
     REVOLUT_API_KEY=XXX
+    ```
+    Then while in the root directory you can start the server:
+    ```bash
+    node server.js
     ```
    
 4. Open another terminal and navigate to the `react-revolut` directory:
