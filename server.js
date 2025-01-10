@@ -106,7 +106,7 @@ app.get('/get-payment-status/:paymentId', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.REACT_APP_PORT;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
