@@ -17,9 +17,9 @@ Make sure you have the following installed on your system:
     git clone <repository-url>
     ```
 
-2. Navigate to the `server` directory and install dependencies:
+2. Navigate to the `root` directory and install dependencies:
     ```bash
-    cd React-Revolut/react-revolut/server
+    cd React-Revolut/react-revolut/
     npm install
     ```
 
