@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Use an environment variable injected at build time
+const port = process.env.REACT_APP_PORT || 4000;
+console.log('Using PORT:', port);
+
 const apiClient = axios.create({
-  baseURL: 'http://localhost:4000',
+  baseURL: `http://localhost:${port}`,
   timeout: 10000,
 });
 
